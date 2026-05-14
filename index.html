@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updrip Sports – Premium Apparel Manufacturer</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f3ee;
+    --accent: #c8a96e;
+    --accent-dark: #9e7d45;
+    --gray: #1a1a1a;
+    --muted: #888;
+    --border: rgba(200,169,110,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .logo span { color: var(--white); }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav ul a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--accent); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(200,169,110,0.04) 100%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .badge-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .badge-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .badge-divider {
+    width: 1px;
+    background: var(--border);
+    align-self: stretch;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  .btn-primary:hover { background: var(--accent-dark); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(245,243,238,0.2);
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  section { padding: 6rem 4rem; }
+
+  .section-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .products { background: var(--gray); }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .product-card {
+    background: var(--gray);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .product-card:hover { background: #222; }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s;
+  }
+
+  .product-card:hover::before { height: 100%; }
+
+  .product-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(200,169,110,0.08);
+    line-height: 1;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+
+  .product-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .terms { background: var(--black); }
+
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 0;
+  }
+
+  .term-card {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  .term-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(200,169,110,0.1);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+  }
+
+  .term-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .term-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .term-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  .contact { background: var(--gray); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--white);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover { border-color: var(--accent); background: rgba(200,169,110,0.05); }
+
+  .contact-link-icon {
+    width: 2rem;
+    height: 2rem;
+    background: rgba(200,169,110,0.1);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text { font-size: 0.88rem; }
+  .contact-link-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-control {
+    background: rgba(245,243,238,0.04);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 0.8rem 1rem;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-control::placeholder { color: #444; }
+  .form-control:focus { border-color: var(--accent); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  footer {
+    padding: 2rem 4rem;
+    background: #060606;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .footer-logo span { color: rgba(245,243,238,0.4); }
+
+  footer p {
+    font-size: 0.75rem;
+    color: #444;
+  }
+
+  .sialkot-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Updrip<span> Sports</span></div>
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#terms">Terms</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">Sialkot, Pakistan — Est. Manufacturing Hub</div>
+  <h1>Premium<br>Apparel<br><em>Manufacturer</em></h1>
+  <p class="hero-sub">Private label sportswear, casualwear, tactical & uniform apparel — crafted for brands across the US, UK, Europe, Australia and Canada.</p>
+  <div class="hero-badges">
+    <div class="badge">
+      <span class="badge-val">30 pcs</span>
+      <span class="badge-label">Min. Order</span>
+    </div>
+    <div class="badge-divider"></div>
+    <div class="badge">
+      <span class="badge-val">15 days</span>
+      <span class="badge-label">Lead Time</span>
+    </div>
+    <div class="badge-divider"></div>
+    <div class="badge">
+      <span class="badge-val">2+ yrs</span>
+      <span class="badge-label">Export Experience</span>
+    </div>
+    <div class="badge-divider"></div>
+    <div class="badge">
+      <span class="badge-val">SCCI</span>
+      <span class="badge-label">Registered</span>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn btn-primary">Get a Quote →</a>
+    <a href="#products" class="btn btn-outline">View Products</a>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-tag">What we make</div>
+  <div class="section-title">Product Categories</div>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="product-num">01</div>
+      <div class="product-icon">🏃</div>
+      <div class="product-name">Sportswear</div>
+      <p class="product-desc">Training kits, tracksuits, compression wear, hoodies, shorts — performance apparel built for athletes and sports brands.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-num">02</div>
+      <div class="product-icon">👕</div>
+      <div class="product-name">Casualwear</div>
+      <p class="product-desc">Polo shirts, t-shirts, joggers, streetwear essentials — premium everyday apparel for lifestyle and fashion brands.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-num">03</div>
+      <div class="product-icon">🎖️</div>
+      <div class="product-name">Tactical & Uniform</div>
+      <p class="product-desc">Combat uniforms, cargo trousers, ripstop jackets, workwear — durable apparel for security firms, law enforcement suppliers, and outdoor brands.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-num">04</div>
+      <div class="product-icon">🏷️</div>
+      <div class="product-name">Custom Private Label</div>
+      <p class="product-desc">Your brand, our craftsmanship. Full OEM service — custom labels, packaging, branding, and design support from concept to delivery.</p>
+    </div>
+  </div>
+</section>
+
+<section class="terms" id="terms">
+  <div class="section-tag">How we work</div>
+  <div class="section-title">Trade Terms</div>
+  <div class="terms-grid">
+    <div class="term-card">
+      <div class="term-icon">📦</div>
+      <div class="term-label">Minimum Order</div>
+      <div class="term-val">30 pcs</div>
+      <div class="term-sub">Per design / colorway</div>
+    </div>
+    <div class="term-card">
+      <div class="term-icon">⏱️</div>
+      <div class="term-label">Lead Time</div>
+      <div class="term-val">15 days</div>
+      <div class="term-sub">From order confirmation</div>
+    </div>
+    <div class="term-card">
+      <div class="term-icon">💳</div>
+      <div class="term-label">Payment</div>
+      <div class="term-val">Wire / Remitly</div>
+      <div class="term-sub">Western Union, RIA, MoneyGram</div>
+    </div>
+    <div class="term-card">
+      <div class="term-icon">🌍</div>
+      <div class="term-label">Markets Served</div>
+      <div class="term-val">Worldwide</div>
+      <div class="term-sub">US, UK, EU, AU, CA & more</div>
+    </div>
+    <div class="term-card">
+      <div class="term-icon">🏛️</div>
+      <div class="term-label">Registration</div>
+      <div class="term-val">SCCI</div>
+      <div class="term-sub">Sialkot Chamber of Commerce</div>
+    </div>
+    <div class="term-card">
+      <div class="term-icon">✂️</div>
+      <div class="term-label">Samples</div>
+      <div class="term-val">Available</div>
+      <div class="term-sub">Contact us to request</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-tag">Get in touch</div>
+  <div class="section-title">Request a Quote</div>
+  <div class="contact-inner">
+    <div>
+      <p>We work with brands and buyers worldwide. Whether you need a sample, a price quote, or want to discuss a custom project — reach out directly.</p>
+      <div class="contact-links">
+        <a href="mailto:updripsports.info@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-text">updripsports.info@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://wa.me/923427058982" class="contact-link" target="_blank">
+          <div class="contact-link-icon">💬</div>
+          <div>
+            <div class="contact-link-label">WhatsApp</div>
+            <div class="contact-link-text">+92 342 7058982</div>
+          </div>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <div class="contact-link-icon">📍</div>
+          <div>
+            <div class="contact-link-label">Location</div>
+            <div class="contact-link-text">Sialkot, Punjab, Pakistan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-control" placeholder="Brand Co.">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product Category</label>
+          <select class="form-control" style="appearance:none; cursor:pointer;">
+            <option value="" disabled selected>Select a category</option>
+            <option>Sportswear</option>
+            <option>Casualwear</option>
+            <option>Tactical & Uniform</option>
+            <option>Custom Private Label</option>
+            <option>Multiple / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" rows="4" placeholder="Tell us about your order — quantity, styles, timeline..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Inquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Updrip<span> Sports</span></div>
+  <p>© 2025 Updrip Sports — Sialkot, Pakistan. All rights reserved.</p>
+  <div class="sialkot-badge"><span class="dot"></span> Made in Sialkot</div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✓ Sent!';
+  btn.style.background = '#3a7a3a';
+  btn.style.color = '#fff';
+  setTimeout(() => {
+    btn.textContent = 'Send Inquiry →';
+    btn.style.background = '';
+    btn.style.color = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
