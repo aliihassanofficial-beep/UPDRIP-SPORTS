@@ -6,477 +6,100 @@
 <title>Updrip Sports – Premium Apparel Manufacturer</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f3ee;
-    --accent: #c8a96e;
-    --accent-dark: #9e7d45;
-    --gray: #1a1a1a;
-    --muted: #888;
-    --border: rgba(200,169,110,0.2);
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(10,10,10,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .logo span { color: var(--white); }
-
-  nav ul {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  nav ul a {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  nav ul a:hover { color: var(--accent); }
-
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 55%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(200,169,110,0.04) 100%);
-    pointer-events: none;
-  }
-
-  .hero-tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    margin-bottom: 2rem;
-    max-width: 800px;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 480px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-
-  .hero-badges {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-
-  .badge {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .badge-val {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    line-height: 1;
-  }
-
-  .badge-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .badge-divider {
-    width: 1px;
-    background: var(--border);
-    align-self: stretch;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: var(--black);
-  }
-
-  .btn-primary:hover { background: var(--accent-dark); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    border: 1px solid rgba(245,243,238,0.2);
-  }
-
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-  section { padding: 6rem 4rem; }
-
-  .section-tag {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .section-tag::before {
-    content: '';
-    display: block;
-    width: 1.5rem;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin-bottom: 3rem;
-  }
-
-  .products { background: var(--gray); }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-
-  .product-card {
-    background: var(--gray);
-    padding: 2.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-    cursor: default;
-  }
-
-  .product-card:hover { background: #222; }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px;
-    height: 0;
-    background: var(--accent);
-    transition: height 0.3s;
-  }
-
-  .product-card:hover::before { height: 100%; }
-
-  .product-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: rgba(200,169,110,0.08);
-    line-height: 1;
-    margin-bottom: 1rem;
-    user-select: none;
-  }
-
-  .product-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .product-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.75rem;
-    color: var(--white);
-  }
-
-  .product-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .terms { background: var(--black); }
-
-  .terms-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 0;
-  }
-
-  .term-card {
-    padding: 2rem;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-  }
-
-  .term-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    background: rgba(200,169,110,0.1);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    font-size: 1.1rem;
-  }
-
-  .term-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.4rem;
-  }
-
-  .term-val {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .term-sub {
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 0.25rem;
-  }
-
-  .contact { background: var(--gray); }
-
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .contact-info p {
-    font-size: 0.95rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-
-  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    text-decoration: none;
-    color: var(--white);
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .contact-link:hover { border-color: var(--accent); background: rgba(200,169,110,0.05); }
-
-  .contact-link-icon {
-    width: 2rem;
-    height: 2rem;
-    background: rgba(200,169,110,0.1);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .contact-link-text { font-size: 0.88rem; }
-  .contact-link-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-
-  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-  .form-label {
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .form-control {
-    background: rgba(245,243,238,0.04);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 0.8rem 1rem;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-    resize: none;
-  }
-
-  .form-control::placeholder { color: #444; }
-  .form-control:focus { border-color: var(--accent); }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  footer {
-    padding: 2rem 4rem;
-    background: #060606;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  .footer-logo span { color: rgba(245,243,238,0.4); }
-
-  footer p {
-    font-size: 0.75rem;
-    color: #444;
-  }
-
-  .sialkot-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  .dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
-    display: inline-block;
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    nav ul { display: none; }
-    .hero { padding: 7rem 1.5rem 3rem; }
-    section { padding: 4rem 1.5rem; }
-    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .form-row { grid-template-columns: 1fr; }
-    footer { padding: 1.5rem; flex-direction: column; text-align: center; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--black:#0a0a0a;--white:#f5f3ee;--accent:#c8a96e;--accent-dark:#9e7d45;--gray:#1a1a1a;--muted:#888;--border:rgba(200,169,110,0.2);}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(10,10,10,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.logo{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+.logo span{color:var(--white);}
+nav ul{display:flex;gap:2rem;list-style:none;}
+nav ul a{font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+nav ul a:hover{color:var(--accent);}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(200,169,110,0.03) 100%);pointer-events:none;}
+.hero-tag{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.hero-tag::before{content:'';display:block;width:2rem;height:1px;background:var(--accent);}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:800;line-height:0.95;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:2rem;max-width:800px;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{font-size:1rem;font-weight:300;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:3rem;}
+.hero-badges{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
+.badge{display:flex;flex-direction:column;gap:0.2rem;}
+.badge-val{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);line-height:1;}
+.badge-label{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.badge-divider{width:1px;background:var(--border);align-self:stretch;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;cursor:pointer;border:none;}
+.btn-primary{background:var(--accent);color:var(--black);}
+.btn-primary:hover{background:var(--accent-dark);}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(245,243,238,0.2);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+section{padding:5rem 4rem;}
+.section-tag{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+.section-tag::before{content:'';display:block;width:1.5rem;height:1px;background:var(--accent);}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.5rem;}
+.section-sub{font-size:0.88rem;color:var(--muted);margin-bottom:2.5rem;line-height:1.7;max-width:600px;}
+.cat-section{background:var(--gray);}
+.cat-section:nth-child(even){background:var(--black);}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);}
+.product-card{background:var(--gray);padding:1.75rem;position:relative;overflow:hidden;transition:background 0.3s;}
+.cat-section:nth-child(even) .product-card{background:var(--black);}
+.product-card:hover{background:#222;}
+.cat-section:nth-child(even) .product-card:hover{background:#111;}
+.product-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height 0.3s;}
+.product-card:hover::before{height:100%;}
+.card-badge{display:inline-block;padding:0.2rem 0.6rem;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.2);border-radius:2px;font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5rem;color:var(--white);}
+.card-desc{font-size:0.8rem;color:var(--muted);line-height:1.7;margin-bottom:1.25rem;}
+.card-specs{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:1.25rem;}
+.spec{display:flex;gap:0.5rem;font-size:0.75rem;}
+.spec-label{color:#555;min-width:65px;}
+.spec-val{color:#999;}
+.card-divider{height:1px;background:rgba(200,169,110,0.1);margin:1rem 0;}
+.card-price{display:flex;align-items:baseline;gap:0.4rem;}
+.price-from{font-size:0.68rem;color:#555;text-transform:uppercase;letter-spacing:0.08em;}
+.price-val{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:700;color:var(--accent);}
+.price-unit{font-size:0.72rem;color:#555;}
+.popular-badge{position:absolute;top:0.75rem;right:0.75rem;background:var(--accent);color:var(--black);font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.5rem;border-radius:2px;}
+.terms{background:var(--black);}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;}
+.term-card{padding:1.75rem;border:1px solid var(--border);border-radius:2px;}
+.term-icon{font-size:1.2rem;margin-bottom:1rem;}
+.term-label{font-size:0.7rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+.term-val{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;color:var(--accent);}
+.term-sub{font-size:0.75rem;color:var(--muted);margin-top:0.2rem;}
+.private-label{background:var(--gray);}
+.pl-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.pl-features{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.pl-feature{display:flex;gap:1rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);border-radius:2px;}
+.pl-feature-icon{font-size:1.1rem;flex-shrink:0;}
+.pl-feature-title{font-size:0.85rem;font-weight:500;margin-bottom:0.2rem;}
+.pl-feature-desc{font-size:0.78rem;color:var(--muted);line-height:1.6;}
+.pl-cta{margin-top:2rem;}
+.contact{background:var(--black);}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.contact-info p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;}
+.contact-links{display:flex;flex-direction:column;gap:1rem;}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border:1px solid var(--border);border-radius:2px;text-decoration:none;color:var(--white);transition:border-color 0.2s,background 0.2s;}
+.contact-link:hover{border-color:var(--accent);background:rgba(200,169,110,0.05);}
+.contact-link-icon{width:2rem;height:2rem;background:rgba(200,169,110,0.1);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.contact-link-label{font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;}
+.contact-link-text{font-size:0.85rem;}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-label{font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.form-control{background:rgba(245,243,238,0.04);border:1px solid var(--border);border-radius:2px;padding:0.75rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;resize:none;}
+.form-control::placeholder{color:#444;}
+.form-control:focus{border-color:var(--accent);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+footer{padding:2rem 4rem;background:#060606;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Barlow Condensed',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
+.footer-logo span{color:rgba(245,243,238,0.4);}
+footer p{font-size:0.72rem;color:#444;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;margin-right:0.4rem;}
+.note{margin-top:2rem;padding:1.1rem 1.4rem;border:1px solid rgba(200,169,110,0.12);border-radius:2px;font-size:0.78rem;color:#666;line-height:1.7;}
+.note strong{color:var(--accent);}
+@media(max-width:768px){nav{padding:1rem 1.5rem;}nav ul{display:none;}.hero{padding:7rem 1.5rem 3rem;}section{padding:3.5rem 1.5rem;}.contact-inner,.pl-inner{grid-template-columns:1fr;gap:2.5rem;}.form-row{grid-template-columns:1fr;}footer{padding:1.5rem;flex-direction:column;text-align:center;}}
 </style>
 </head>
 <body>
@@ -484,166 +107,962 @@
 <nav>
   <div class="logo">Updrip<span> Sports</span></div>
   <ul>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#terms">Terms</a></li>
+    <li><a href="#sportswear">Sportswear</a></li>
+    <li><a href="#casualwear">Casualwear</a></li>
+    <li><a href="#tactical">Tactical</a></li>
+    <li><a href="#private-label">Private Label</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-tag">Sialkot, Pakistan — Est. Manufacturing Hub</div>
   <h1>Premium<br>Apparel<br><em>Manufacturer</em></h1>
   <p class="hero-sub">Private label sportswear, casualwear, tactical & uniform apparel — crafted for brands across the US, UK, Europe, Australia and Canada.</p>
   <div class="hero-badges">
-    <div class="badge">
-      <span class="badge-val">30 pcs</span>
-      <span class="badge-label">Min. Order</span>
-    </div>
+    <div class="badge"><span class="badge-val">30 pcs</span><span class="badge-label">Min. Order</span></div>
     <div class="badge-divider"></div>
-    <div class="badge">
-      <span class="badge-val">15 days</span>
-      <span class="badge-label">Lead Time</span>
-    </div>
+    <div class="badge"><span class="badge-val">15 days</span><span class="badge-label">Lead Time</span></div>
     <div class="badge-divider"></div>
-    <div class="badge">
-      <span class="badge-val">2+ yrs</span>
-      <span class="badge-label">Export Experience</span>
-    </div>
+    <div class="badge"><span class="badge-val">2+ yrs</span><span class="badge-label">Export Experience</span></div>
     <div class="badge-divider"></div>
-    <div class="badge">
-      <span class="badge-val">SCCI</span>
-      <span class="badge-label">Registered</span>
-    </div>
+    <div class="badge"><span class="badge-val">SCCI</span><span class="badge-label">Registered</span></div>
   </div>
   <div class="hero-ctas">
     <a href="#contact" class="btn btn-primary">Get a Quote →</a>
-    <a href="#products" class="btn btn-outline">View Products</a>
+    <a href="#sportswear" class="btn btn-outline">View Products</a>
   </div>
 </section>
 
-<section class="products" id="products">
-  <div class="section-tag">What we make</div>
-  <div class="section-title">Product Categories</div>
+<!-- SPORTSWEAR -->
+<section class="cat-section" id="sportswear">
+  <div class="section-tag">Category 01</div>
+  <div class="section-title">Sportswear</div>
+  <p class="section-sub">Performance apparel for sports brands, clubs, and athletic retailers. Full sublimation, moisture-wicking fabrics, custom private label.</p>
   <div class="product-grid">
-    <div class="product-card">
-      <div class="product-num">01</div>
-      <div class="product-icon">🏃</div>
-      <div class="product-name">Sportswear</div>
-      <p class="product-desc">Training kits, tracksuits, compression wear, hoodies, shorts — performance apparel built for athletes and sports brands.</p>
+
+    <div class="product-card" style="position:relative;">
+      <div class="popular-badge">Best Seller</div>
+      <div class="card-badge">Training</div>
+      <div class="card-name">Training Kit (Jersey + Shorts)</div>
+      <p class="card-desc">Moisture-wicking polyester jersey and shorts set. Full sublimation print, custom logo and labels.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">100% Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$9.50</span><span class="price-unit">/ set</span></div>
     </div>
+
     <div class="product-card">
-      <div class="product-num">02</div>
-      <div class="product-icon">👕</div>
-      <div class="product-name">Casualwear</div>
-      <p class="product-desc">Polo shirts, t-shirts, joggers, streetwear essentials — premium everyday apparel for lifestyle and fashion brands.</p>
+      <div class="card-badge">Tracksuit</div>
+      <div class="card-name">Full Zip Tracksuit</div>
+      <p class="card-desc">Zip-up jacket and matching jogger pants. Brushed fleece lining, ribbed cuffs, custom embroidery or print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Fleece Blend</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$18.00</span><span class="price-unit">/ set</span></div>
     </div>
+
     <div class="product-card">
-      <div class="product-num">03</div>
-      <div class="product-icon">🎖️</div>
-      <div class="product-name">Tactical & Uniform</div>
-      <p class="product-desc">Combat uniforms, cargo trousers, ripstop jackets, workwear — durable apparel for security firms, law enforcement suppliers, and outdoor brands.</p>
+      <div class="card-badge">Hoodie</div>
+      <div class="card-name">Pullover Hoodie</div>
+      <p class="card-desc">Classic pullover hoodie in French terry or fleece. Kangaroo pocket, drawstring hood, screen print or embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">French Terry / Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$11.00</span><span class="price-unit">/ pc</span></div>
     </div>
+
     <div class="product-card">
-      <div class="product-num">04</div>
-      <div class="product-icon">🏷️</div>
-      <div class="product-name">Custom Private Label</div>
-      <p class="product-desc">Your brand, our craftsmanship. Full OEM service — custom labels, packaging, branding, and design support from concept to delivery.</p>
+      <div class="card-badge">Hoodie</div>
+      <div class="card-name">Zip-Up Hoodie</div>
+      <p class="card-desc">Full zip hoodie with raglan or set-in sleeves. Side pockets, ribbed hem, custom woven label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton-Poly Blend</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$12.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Bottoms</div>
+      <div class="card-name">Jogger Pants</div>
+      <p class="card-desc">Tapered joggers with elasticated waistband and cuffed ankle. Side pockets, custom drawstring, multiple fabric options.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Fleece / Terry / Poly</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Bottoms</div>
+      <div class="card-name">Athletic Shorts</div>
+      <p class="card-desc">Lightweight mesh-lined training shorts. Elastic waistband with drawstring, side pockets, sublimation print available.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">100% Polyester Mesh</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$5.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Compression</div>
+      <div class="card-name">Compression Leggings</div>
+      <p class="card-desc">4-way stretch compression leggings with flatlock seams. Moisture-wicking, anti-odor treatment, high waistband option.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">80% Poly / 20% Spandex</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$9.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Compression</div>
+      <div class="card-name">Compression Shorts</div>
+      <p class="card-desc">Mid-thigh compression shorts with flatlock stitching. Ideal as base layer or standalone gym wear.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Spandex</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Top</div>
+      <div class="card-name">Performance T-Shirt</div>
+      <p class="card-desc">Lightweight dri-fit tee for training and sport. Crew neck, set-in sleeve, sublimation or screen print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">100% Polyester Dri-Fit</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$4.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Top</div>
+      <div class="card-name">Sleeveless Tank Top</div>
+      <p class="card-desc">Athletic tank for gym and training use. Dropped armholes, moisture-wicking, custom print options.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Polyester Mesh / Dri-Fit</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$4.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Women's</div>
+      <div class="card-name">Sports Bra</div>
+      <p class="card-desc">Medium to high support sports bra. Racerback or regular strap, custom print, removable padding option.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Spandex</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Football</div>
+      <div class="card-name">Football Jersey</div>
+      <p class="card-desc">V-neck football jersey with number and name printing. Breathable mesh body, sublimation full colour print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">100% Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$7.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Football</div>
+      <div class="card-name">Goalkeeper Kit</div>
+      <p class="card-desc">Long sleeve goalkeeper jersey with padded elbows. Matching shorts, full sublimation, custom colours.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Polyester + Padding</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$14.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Basketball</div>
+      <div class="card-name">Basketball Uniform Set</div>
+      <p class="card-desc">Reversible or single-sided basketball jersey and shorts. Custom sublimation, team name, number printing.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Dri-Fit Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$11.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Running</div>
+      <div class="card-name">Running Jacket</div>
+      <p class="card-desc">Lightweight windbreaker running jacket. Half-zip or full-zip, reflective trim, packable design option.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Lightweight Nylon / Poly</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$14.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Cycling</div>
+      <div class="card-name">Cycling Jersey</div>
+      <p class="card-desc">Aero-cut road cycling jersey with 3 rear pockets, full front zip, quick-dry sublimation fabric.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Sublimation Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$13.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Gym</div>
+      <div class="card-name">Gym Vest / Stringer</div>
+      <p class="card-desc">Bodybuilding stringer vest with deep cut armholes. Lightweight poly-cotton, custom print or plain.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton-Poly Blend</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$4.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Yoga</div>
+      <div class="card-name">Yoga Set (Top + Leggings)</div>
+      <p class="card-desc">Seamless or cut & sew yoga set with crop top and high-waist leggings. 4-way stretch, custom print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Nylon-Spandex</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$13.50</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Cricket</div>
+      <div class="card-name">Cricket Whites Uniform</div>
+      <p class="card-desc">Traditional cricket whites or coloured ODI kit. Polo collar jersey and trousers, moisture-wicking, team branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Polyester Pique / Dri-Fit</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$12.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Rugby</div>
+      <div class="card-name">Rugby Jersey</div>
+      <p class="card-desc">Heavy-duty rugby jersey with reinforced collar and seams. Sublimation or cut & sew panels, club branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Heavy Polyester Pique</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$10.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Swim</div>
+      <div class="card-name">Swimming Trunks / Boardshorts</div>
+      <p class="card-desc">Quick-dry boardshorts or competition swim trunks. Drawstring waist, mesh liner, custom sublimation print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Quick-Dry Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Outerwear</div>
+      <div class="card-name">Softshell Sports Jacket</div>
+      <p class="card-desc">Water-resistant softshell jacket with bonded fleece lining. YKK zippers, chest pocket, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Softshell / Bonded Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$19.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Padel / Tennis</div>
+      <div class="card-name">Tennis / Padel Outfit</div>
+      <p class="card-desc">Polo shirt and shorts or skort set for tennis and padel. Stretch polyester, breathable mesh sides.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Stretch Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$11.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Sublimation</div>
+      <div class="card-name">Full Sublimation Sportswear Set</div>
+      <p class="card-desc">Any sport — fully custom sublimation print from your design file. Jersey + shorts or top + bottom as needed.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Performance Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$14.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Winter</div>
+      <div class="card-name">Thermal Base Layer Set</div>
+      <p class="card-desc">Long sleeve top and full-length bottom in thermal stretch fabric. Moisture management, anti-odor, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Thermal Poly-Spandex</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$14.50</span><span class="price-unit">/ set</span></div>
+    </div>
+
+  </div>
+  <div class="note"><strong>All prices FOB Sialkot.</strong> Final price depends on quantity, fabric, and print complexity. Samples available on request.</div>
+</section>
+
+<!-- CASUALWEAR -->
+<section class="cat-section" id="casualwear">
+  <div class="section-tag">Category 02</div>
+  <div class="section-title">Casualwear</div>
+  <p class="section-sub">Premium everyday apparel for lifestyle, streetwear, and fashion brands. Crafted for comfort, style, and private label branding.</p>
+  <div class="product-grid">
+
+    <div class="product-card" style="position:relative;">
+      <div class="popular-badge">Best Seller</div>
+      <div class="card-badge">Polo</div>
+      <div class="card-name">Polo Shirt</div>
+      <p class="card-desc">Classic pique polo with 2-button placket, ribbed collar and cuffs. Embroidery or print, custom label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Pique / Poly-Cotton</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">T-Shirt</div>
+      <div class="card-name">Heavyweight Tee</div>
+      <p class="card-desc">Premium 200gsm+ cotton tee. Boxy or regular fit, ribbed collar, custom screen print or DTF.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">100% Cotton 200gsm+</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$5.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">T-Shirt</div>
+      <div class="card-name">Oversized Drop Shoulder Tee</div>
+      <p class="card-desc">Streetwear-fit oversized tee with drop shoulder seam. Heavy cotton, wide neck, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton 220gsm</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Sweatshirt</div>
+      <div class="card-name">Crewneck Sweatshirt</div>
+      <p class="card-desc">Classic crewneck in brushed fleece. Ribbed hem and cuffs, custom embroidery, woven label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton-Poly Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$10.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Joggers</div>
+      <div class="card-name">Cotton Jogger Pants</div>
+      <p class="card-desc">Soft cotton-blend joggers with elasticated waist, side and back pockets, cuffed hem. Custom print or embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton-Poly Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$9.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shorts</div>
+      <div class="card-name">French Terry Shorts</div>
+      <p class="card-desc">Casual everyday shorts in French terry. Elasticated drawstring waist, side pockets, custom label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton French Terry</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Jacket</div>
+      <div class="card-name">Bomber Jacket</div>
+      <p class="card-desc">Classic bomber with ribbed collar, cuffs and hem. Satin or nylon shell, custom embroidery or patches.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Nylon / Satin Shell</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$22.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Jacket</div>
+      <div class="card-name">Varsity / Baseball Jacket</div>
+      <p class="card-desc">Wool body with leather sleeves or full fabric version. Snap button front, custom chenille patches.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Melton Wool + Leather</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$28.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Outerwear</div>
+      <div class="card-name">Coach Jacket</div>
+      <p class="card-desc">Lightweight nylon coach jacket with snap buttons. Chest pocket, custom print or embroidery, multiple colour options.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Nylon / Poly Shell</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$16.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Vest</div>
+      <div class="card-name">Puffer Vest</div>
+      <p class="card-desc">Sleeveless puffer vest with quilted design. Zip front, inner pockets, custom logo embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Nylon + Poly Fill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$17.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shorts</div>
+      <div class="card-name">Cargo Shorts</div>
+      <p class="card-desc">Casual multi-pocket cargo shorts. Cotton twill or ripstop, button closure, custom label and branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Twill / Ripstop</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Trousers</div>
+      <div class="card-name">Chino Trousers</div>
+      <p class="card-desc">Smart casual chinos in cotton twill. Flat front, slim or straight fit, button and zip fly, custom label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Twill 220gsm</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$10.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Streetwear</div>
+      <div class="card-name">Cargo Trousers</div>
+      <p class="card-desc">Wide-leg or tapered cargo trousers with multiple utility pockets. Cotton ripstop, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Ripstop / Twill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$11.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Loungewear</div>
+      <div class="card-name">Lounge Set (Top + Bottom)</div>
+      <p class="card-desc">Matching loungewear set in soft jersey or waffle knit. Relaxed fit, custom label, ideal for lifestyle brands.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Jersey / Waffle Knit</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$12.50</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shirt</div>
+      <div class="card-name">Casual Shirt (Woven)</div>
+      <p class="card-desc">Relaxed fit casual shirt in cotton poplin or oxford. Button-down collar, chest pocket, custom label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Poplin / Oxford</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Zip-Up</div>
+      <div class="card-name">Quarter Zip Pullover</div>
+      <p class="card-desc">Quarter zip fleece or performance pullover. Mock neck, custom embroidery, ideal for club and corporate wear.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Fleece / Micro-Poly</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$13.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shorts</div>
+      <div class="card-name">5" Running / Casual Shorts</div>
+      <p class="card-desc">Versatile 5-inch inseam shorts for running or casual wear. Lightweight, quick-dry, custom colour and print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Polyester / Nylon Blend</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$5.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Women's</div>
+      <div class="card-name">Athleisure Crop Top</div>
+      <p class="card-desc">Cropped long sleeve or short sleeve top for gym-to-street wear. Stretch fabric, custom print, woven label.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton-Spandex Blend</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Outerwear</div>
+      <div class="card-name">Hoodie Tracksuit Set</div>
+      <p class="card-desc">Matching hoodie and jogger set in premium cotton fleece. Custom embroidery, woven label, retail-ready packaging.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Cotton Fleece 300gsm</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$19.50</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shorts</div>
+      <div class="card-name">Swim Shorts / Casual Boardshorts</div>
+      <p class="card-desc">Quick-dry casual boardshorts for beach and leisure. Elasticated waist, side pockets, custom print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Quick-Dry Polyester</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$6.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+  </div>
+  <div class="note"><strong>All prices FOB Sialkot.</strong> Final price depends on quantity, fabric, and print complexity. Samples available on request.</div>
+</section>
+
+<!-- TACTICAL -->
+<section class="cat-section" id="tactical">
+  <div class="section-tag">Category 03</div>
+  <div class="section-title">Tactical & Uniform</div>
+  <p class="section-sub">Durable workwear, security uniforms, and tactical apparel for law enforcement suppliers, private security firms, and outdoor brands.</p>
+  <div class="product-grid">
+
+    <div class="product-card" style="position:relative;">
+      <div class="popular-badge">Best Seller</div>
+      <div class="card-badge">Uniform</div>
+      <div class="card-name">Ripstop Combat Uniform Set</div>
+      <p class="card-desc">Full BDU-style shirt and trouser set in ripstop fabric. Multiple pockets, bartack stitching, custom colour and branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">65/35 Poly-Cotton Ripstop</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$19.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shirt</div>
+      <div class="card-name">Tactical Combat Shirt</div>
+      <p class="card-desc">Long sleeve combat shirt with raglan sleeves, padded elbows, chest and sleeve pockets, Velcro panels.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop + Stretch Panels</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$12.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Trousers</div>
+      <div class="card-name">Tactical Cargo Trousers</div>
+      <p class="card-desc">Multi-pocket tactical trousers with reinforced knees, D-ring belt loops, YKK zipper fly, gusseted crotch.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop / Canvas</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$11.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Security</div>
+      <div class="card-name">Security Guard Uniform Set</div>
+      <p class="card-desc">Professional security uniform — shirt and trouser set. Epaulette tabs, chest pockets, custom logo embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Viscose / Twill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$17.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Jacket</div>
+      <div class="card-name">Tactical Softshell Jacket</div>
+      <p class="card-desc">Water-resistant softshell jacket with fleece lining. Chest and arm pockets, Velcro cuffs, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Softshell / Bonded Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$22.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Fleece</div>
+      <div class="card-name">Tactical Fleece Jacket</div>
+      <p class="card-desc">Full zip polar fleece jacket with thumb holes and chest pockets. Lightweight mid-layer, custom embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">300gsm Polar Fleece</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$16.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Law Enforcement</div>
+      <div class="card-name">Police / Law Enforcement Shirt</div>
+      <p class="card-desc">Short or long sleeve uniform shirt with badge tab, chest pockets, epaulette loops. Custom colour and badge embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Cotton Twill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$9.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Coverall</div>
+      <div class="card-name">Tactical Coverall / Jumpsuit</div>
+      <p class="card-desc">One-piece ripstop coverall with multiple pockets and knee reinforcement. Custom colour and logo, YKK front zip.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop Poly-Cotton</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$21.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Shorts</div>
+      <div class="card-name">Tactical Shorts</div>
+      <p class="card-desc">Ripstop tactical shorts with cargo pockets and D-ring. Ideal for warm-weather security and outdoor operations.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop / Canvas</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Hi-Vis</div>
+      <div class="card-name">Hi-Visibility Safety Vest</div>
+      <p class="card-desc">EN ISO 20471 compliant hi-vis vest with reflective tape. Mesh or solid back, custom logo print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Polyester Mesh / Solid</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$5.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Hi-Vis</div>
+      <div class="card-name">Hi-Vis Safety Jacket</div>
+      <p class="card-desc">High visibility jacket with reflective tape, zip front, inner lining option. Custom logo and branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Oxford Polyester + Reflective</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$14.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Workwear</div>
+      <div class="card-name">Workwear Bib Dungarees</div>
+      <p class="card-desc">Heavy-duty bib overalls with adjustable shoulder straps and tool pockets. Canvas or ripstop, custom logo.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Canvas / Ripstop</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$16.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Camo</div>
+      <div class="card-name">Camouflage Uniform Set</div>
+      <p class="card-desc">Full camo BDU set — shirt and trousers. Available in Multicam, ACU, woodland, or custom camo print.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop Poly-Cotton</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$21.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Outdoor</div>
+      <div class="card-name">Hiking / Ranger Trousers</div>
+      <p class="card-desc">Lightweight stretch hiking trousers with zip-off leg option. Water-resistant, multiple pockets, custom branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Nylon Stretch / Ripstop</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$13.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Vest</div>
+      <div class="card-name">Tactical Vest / Plate Carrier Shell</div>
+      <p class="card-desc">Carrier shell vest with MOLLE webbing and Velcro panels. Ripstop construction, custom colour and branding.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">600D Ripstop / Cordura</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$24.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Workwear</div>
+      <div class="card-name">Mechanic / Workshop Shirt</div>
+      <p class="card-desc">Short or long sleeve workwear shirt with chest pockets and pen holder. Poly-cotton, easy-iron, name embroidery.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Cotton Twill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Jacket</div>
+      <div class="card-name">Windproof Field Jacket</div>
+      <p class="card-desc">Classic M65-style field jacket with multiple pockets and drawstring hem. Ripstop shell, custom colour.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Ripstop Nylon / Cotton</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$24.00</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Gloves</div>
+      <div class="card-name">Tactical Gloves</div>
+      <p class="card-desc">Touchscreen-compatible tactical gloves with knuckle protection and grip palm. Custom branding available.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Leather + Spandex Back</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pairs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$8.50</span><span class="price-unit">/ pair</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Balaclava</div>
+      <div class="card-name">Tactical Balaclava</div>
+      <p class="card-desc">Full face balaclava for cold weather operations. Fleece or moisture-wicking poly, custom colour.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Fleece / Poly</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 pcs</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$4.50</span><span class="price-unit">/ pc</span></div>
+    </div>
+
+    <div class="product-card">
+      <div class="card-badge">Uniform</div>
+      <div class="card-name">Corporate / Staff Uniform Set</div>
+      <p class="card-desc">Professional staff uniform — formal shirt and trousers or skirt. Custom logo embroidery, multiple colour options.</p>
+      <div class="card-specs">
+        <div class="spec"><span class="spec-label">Fabric</span><span class="spec-val">Poly-Viscose / Twill</span></div>
+        <div class="spec"><span class="spec-label">MOQ</span><span class="spec-val">30 sets</span></div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-price"><span class="price-from">From</span><span class="price-val">$15.00</span><span class="price-unit">/ set</span></div>
+    </div>
+
+  </div>
+  <div class="note"><strong>All prices FOB Sialkot.</strong> Final price depends on quantity, fabric, and specifications. Samples available on request.</div>
+</section>
+
+<!-- PRIVATE LABEL -->
+<section class="private-label" id="private-label">
+  <div class="section-tag">Category 04</div>
+  <div class="section-title">Custom Private Label</div>
+  <div class="pl-inner">
+    <div>
+      <p class="section-sub">Your brand, our craftsmanship. Full OEM and ODM service from Sialkot — the world's leading apparel manufacturing hub. We handle everything from design to delivery.</p>
+      <div class="pl-features">
+        <div class="pl-feature">
+          <div class="pl-feature-icon">🎨</div>
+          <div>
+            <div class="pl-feature-title">Design Support</div>
+            <div class="pl-feature-desc">Send us your tech pack, sketch, or reference — our team produces samples to spec.</div>
+          </div>
+        </div>
+        <div class="pl-feature">
+          <div class="pl-feature-icon">🏷️</div>
+          <div>
+            <div class="pl-feature-title">Custom Branding</div>
+            <div class="pl-feature-desc">Woven labels, neck labels, hang tags, heat transfers — your brand on every piece.</div>
+          </div>
+        </div>
+        <div class="pl-feature">
+          <div class="pl-feature-icon">📦</div>
+          <div>
+            <div class="pl-feature-title">Retail Packaging</div>
+            <div class="pl-feature-desc">Polybag, tissue wrap, custom boxes — retail-ready presentation for your market.</div>
+          </div>
+        </div>
+        <div class="pl-feature">
+          <div class="pl-feature-icon">✈️</div>
+          <div>
+            <div class="pl-feature-title">Worldwide Shipping</div>
+            <div class="pl-feature-desc">FOB Sialkot. We work with your freight forwarder or arrange shipment directly.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pl-cta">
+        <a href="#contact" class="btn btn-primary">Start a Private Label Project →</a>
+      </div>
+    </div>
+    <div>
+      <div class="term-card" style="margin-bottom:1rem;">
+        <div class="term-label">Minimum Order</div>
+        <div class="term-val">30 pcs</div>
+        <div class="term-sub">Per design / colourway</div>
+      </div>
+      <div class="term-card" style="margin-bottom:1rem;">
+        <div class="term-label">Sample Lead Time</div>
+        <div class="term-val">7–10 days</div>
+        <div class="term-sub">From design approval</div>
+      </div>
+      <div class="term-card" style="margin-bottom:1rem;">
+        <div class="term-label">Bulk Lead Time</div>
+        <div class="term-val">15 days</div>
+        <div class="term-sub">From order confirmation</div>
+      </div>
+      <div class="term-card">
+        <div class="term-label">Print Methods</div>
+        <div class="term-val">All Methods</div>
+        <div class="term-sub">Sublimation, screen print, embroidery, DTF, heat transfer</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- TRADE TERMS -->
 <section class="terms" id="terms">
   <div class="section-tag">How we work</div>
   <div class="section-title">Trade Terms</div>
   <div class="terms-grid">
-    <div class="term-card">
-      <div class="term-icon">📦</div>
-      <div class="term-label">Minimum Order</div>
-      <div class="term-val">30 pcs</div>
-      <div class="term-sub">Per design / colorway</div>
-    </div>
-    <div class="term-card">
-      <div class="term-icon">⏱️</div>
-      <div class="term-label">Lead Time</div>
-      <div class="term-val">15 days</div>
-      <div class="term-sub">From order confirmation</div>
-    </div>
-    <div class="term-card">
-      <div class="term-icon">💳</div>
-      <div class="term-label">Payment</div>
-      <div class="term-val">Wire / Remitly</div>
-      <div class="term-sub">Western Union, RIA, MoneyGram</div>
-    </div>
-    <div class="term-card">
-      <div class="term-icon">🌍</div>
-      <div class="term-label">Markets Served</div>
-      <div class="term-val">Worldwide</div>
-      <div class="term-sub">US, UK, EU, AU, CA & more</div>
-    </div>
-    <div class="term-card">
-      <div class="term-icon">🏛️</div>
-      <div class="term-label">Registration</div>
-      <div class="term-val">SCCI</div>
-      <div class="term-sub">Sialkot Chamber of Commerce</div>
-    </div>
-    <div class="term-card">
-      <div class="term-icon">✂️</div>
-      <div class="term-label">Samples</div>
-      <div class="term-val">Available</div>
-      <div class="term-sub">Contact us to request</div>
-    </div>
+    <div class="term-card"><div class="term-icon">📦</div><div class="term-label">Minimum Order</div><div class="term-val">30 pcs</div><div class="term-sub">Per design / colourway</div></div>
+    <div class="term-card"><div class="term-icon">⏱️</div><div class="term-label">Lead Time</div><div class="term-val">15 days</div><div class="term-sub">From order confirmation</div></div>
+    <div class="term-card"><div class="term-icon">💳</div><div class="term-label">Payment</div><div class="term-val">Wire / Remitly</div><div class="term-sub">Western Union, RIA, MoneyGram</div></div>
+    <div class="term-card"><div class="term-icon">🌍</div><div class="term-label">Markets</div><div class="term-val">Worldwide</div><div class="term-sub">US, UK, EU, AU, CA & more</div></div>
+    <div class="term-card"><div class="term-icon">🏛️</div><div class="term-label">Registration</div><div class="term-val">SCCI</div><div class="term-sub">Sialkot Chamber of Commerce</div></div>
+    <div class="term-card"><div class="term-icon">✂️</div><div class="term-label">Samples</div><div class="term-val">Available</div><div class="term-sub">Contact us to request</div></div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="section-tag">Get in touch</div>
   <div class="section-title">Request a Quote</div>
   <div class="contact-inner">
     <div>
-      <p>We work with brands and buyers worldwide. Whether you need a sample, a price quote, or want to discuss a custom project — reach out directly.</p>
+      <p class="contact-info">We work with brands and buyers worldwide. Whether you need a sample, a price quote, or want to discuss a custom project — reach out directly.</p>
       <div class="contact-links">
         <a href="mailto:updripsports.info@gmail.com" class="contact-link">
           <div class="contact-link-icon">✉️</div>
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-text">updripsports.info@gmail.com</div>
-          </div>
+          <div><div class="contact-link-label">Email</div><div class="contact-link-text">updripsports.info@gmail.com</div></div>
         </a>
         <a href="https://wa.me/923427058982" class="contact-link" target="_blank">
           <div class="contact-link-icon">💬</div>
-          <div>
-            <div class="contact-link-label">WhatsApp</div>
-            <div class="contact-link-text">+92 342 7058982</div>
-          </div>
+          <div><div class="contact-link-label">WhatsApp</div><div class="contact-link-text">+92 342 7058982</div></div>
         </a>
         <div class="contact-link" style="cursor:default;">
           <div class="contact-link-icon">📍</div>
-          <div>
-            <div class="contact-link-label">Location</div>
-            <div class="contact-link-text">Sialkot, Punjab, Pakistan</div>
-          </div>
+          <div><div class="contact-link-label">Location</div><div class="contact-link-text">Sialkot, Punjab, Pakistan</div></div>
         </div>
       </div>
     </div>
     <div>
       <form class="contact-form" onsubmit="handleSubmit(event)">
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-control" placeholder="John Smith" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Company</label>
-            <input type="text" class="form-control" placeholder="Brand Co.">
-          </div>
+          <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-control" placeholder="John Smith" required></div>
+          <div class="form-group"><label class="form-label">Company</label><input type="text" class="form-control" placeholder="Brand Co."></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-control" placeholder="you@company.com" required>
-        </div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="you@company.com" required></div>
         <div class="form-group">
           <label class="form-label">Product Category</label>
-          <select class="form-control" style="appearance:none; cursor:pointer;">
+          <select class="form-control" style="appearance:none;cursor:pointer;">
             <option value="" disabled selected>Select a category</option>
             <option>Sportswear</option>
             <option>Casualwear</option>
@@ -652,10 +1071,7 @@
             <option>Multiple / Other</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-control" rows="4" placeholder="Tell us about your order — quantity, styles, timeline..."></textarea>
-        </div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-control" rows="4" placeholder="Tell us about your order — quantity, styles, timeline..."></textarea></div>
         <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Inquiry →</button>
       </form>
     </div>
@@ -665,24 +1081,18 @@
 <footer>
   <div class="footer-logo">Updrip<span> Sports</span></div>
   <p>© 2025 Updrip Sports — Sialkot, Pakistan. All rights reserved.</p>
-  <div class="sialkot-badge"><span class="dot"></span> Made in Sialkot</div>
+  <div style="font-size:0.72rem;color:#555;"><span class="dot"></span>Made in Sialkot</div>
 </footer>
 
 <script>
-function handleSubmit(e) {
+function handleSubmit(e){
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Sent!';
-  btn.style.background = '#3a7a3a';
-  btn.style.color = '#fff';
-  setTimeout(() => {
-    btn.textContent = 'Send Inquiry →';
-    btn.style.background = '';
-    btn.style.color = '';
-    e.target.reset();
-  }, 3000);
+  const btn=e.target.querySelector('button[type="submit"]');
+  btn.textContent='✓ Sent!';
+  btn.style.background='#2d6a2d';
+  btn.style.color='#fff';
+  setTimeout(()=>{btn.textContent='Send Inquiry →';btn.style.background='';btn.style.color='';e.target.reset();},3000);
 }
 </script>
-
 </body>
 </html>
